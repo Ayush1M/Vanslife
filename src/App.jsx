@@ -3,6 +3,8 @@ import Home from "./assets/Home"
 import About from "./assets/About"
 import Vans from "./assets/Vans"
 
+import './server'
+
 function App() {
   
   return (
