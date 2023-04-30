@@ -2,6 +2,7 @@ import { Link, Route, Routes} from "react-router-dom"
 import Home from "./assets/Home"
 import About from "./assets/About"
 import Vans from "./assets/Vans"
+import Vandetail from "./assets/Vandetail"
 
 import './server'
 
@@ -20,6 +21,7 @@ function App() {
       <Route path="/About" element={<About />}/>
       <Route path="/Home" element={<Home />}/>
       <Route path="/vans" element={<Vans />}/>
+      <Route path="/vans/:id" element={<Vandetail />}/>
     </Routes>
     </>
   )
