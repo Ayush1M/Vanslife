@@ -5,6 +5,10 @@ import About from "./assets/About"
 import Vans from "./assets/Vans"
 import Vandetail from "./assets/Vandetail"
 import Layout from "./components/Layout"
+import Hostlayout from "./components/Hostlayout"
+import Dashboard from "./Host/Dashboard"
+import Income from "./Host/Income"
+import Reviews from "./Host/Reviews"
 
 import './server'
 
@@ -13,11 +17,17 @@ function App() {
   return (
     <>
     <Routes>
-      <Route element={<Layout />}>
-      <Route path="/" element={<Home />}/>
-      <Route path="/About" element={<About />}/>
-      <Route path="/vans" element={<Vans />}/>
+      <Route path="/" element={<Layout />}>
+      <Route index element={<Home />}/>
+      <Route path="about" element={<About />}/>
+      <Route path="vans" element={<Vans />}/>
       <Route path="/vans/:id" element={<Vandetail />}/>
+
+      <Route path="host" element={<Hostlayout />}>
+        <Route index element={<Dashboard />} />
+        <Route path="income" element={<Income />} />
+        <Route path="reviews" element={<Reviews />} />
+      </Route>
       </Route>
     </Routes>
     </>
