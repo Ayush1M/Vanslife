@@ -31,9 +31,15 @@ export default function Vans(){
     return(
         <>
         <div className="van-list-container">
-            <div className="van-list">
+            {
+                vansData.length > 0 ? 
+            (<div className="van-list">
                 {vanElements}
-            </div>
+            </div>)  : (
+
+            <h2>Loading....</h2>
+            )
+}
         </div>
         </>
             
