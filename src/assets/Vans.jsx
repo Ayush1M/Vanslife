@@ -1,22 +1,17 @@
-import React, {useEffect, useState} from "react";
-import {Link, useSearchParams} from 'react-router-dom'
+import React from "react";
+import {Link, useSearchParams, useLoaderData} from 'react-router-dom'
+import {getVans} from "../api"
 
+export function loader(){
+    return getVans()
+}
 
 export default function Vans(){
     const [searchParams, setSearchParams] = useSearchParams()
-    const [vansData, setVansData] = useState([])
+    const vansData = useLoaderData()
 
     const typeFilter = searchParams.get("type")
     const displayVans = typeFilter ? vansData.filter((van) => van.type.toLowerCase() === typeFilter) : vansData
-
-    useEffect(()=> {
-        async function getVansData(){
-            const res = await fetch('/api/vans')
-            const data = await res.json()
-            setVansData(data.vans)
-        }
-        getVansData()
-    }, [])
 
 
     const vanElements = displayVans.map((vanData) => (
@@ -57,7 +52,7 @@ export default function Vans(){
 
             <h2>Loading....</h2>
             )
-}
+            }
         </div>
         </>
             
