@@ -5,7 +5,6 @@ import { useParams , Link, useLocation } from "react-router-dom";
 export default function Vandetail(){
     const params = useParams()
     const location = useLocation()
-    console.log(location)
     const [vanDetail, setVanDetail] = useState([])
 
     useEffect(()=> {
