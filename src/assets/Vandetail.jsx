@@ -1,23 +1,17 @@
-import React, { useEffect, useState } from "react";
-import { useParams , Link, useLocation } from "react-router-dom";
+import React from "react";
+import { Link, useLocation, useLoaderData } from "react-router-dom";
+import {getVans} from "../api"
 
+export function loader({ params }){
+    return getVans(params.id)  
+}
 
 export default function Vandetail(){
-    const params = useParams()
     const location = useLocation()
-    const [vanDetail, setVanDetail] = useState([])
+    const vanDetail = useLoaderData()
 
-    useEffect(()=> {
-        async function getVanDetail(){
-            const res = await fetch(`/api/vans/${params.id}`)
-            const data = await res.json()
-            setVanDetail(data.vans)
-        }
-        getVanDetail()
-    }, [params.id])
-
-    const search = location.state?.search || ""
-    const type = location.state?.type || "all"
+    const search = location.state?.search || "";
+    const type = location.state?.type || "all";
     
 
     return(
@@ -27,7 +21,6 @@ export default function Vandetail(){
                 relative="path"
                 className="back-button"
             >&larr; <span>Back to {type} vans</span></Link>
-            {vanDetail ? (
                 <div className="van-detail">
                     <img src={vanDetail.imageUrl} />
                     <i className={`van-type ${vanDetail.type} selected`}>{vanDetail.type}</i>
@@ -36,7 +29,6 @@ export default function Vandetail(){
                     <p>{vanDetail.description}</p>
                     <button className="link-button">Rent this van</button>
                 </div>
-            ) : <h2>Loading...</h2>}
         </div>
     )
 }

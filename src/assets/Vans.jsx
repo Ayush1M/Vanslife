@@ -44,14 +44,9 @@ export default function Vans(){
                 ? (<button onClick={() => setSearchParams({})} className="van-type clear-filters">Clear Filter</button>) 
                 : null}
             </div>
-            {
-                vansData.length > 0 ? 
-            (<div className="van-list">
+            { <div className="van-list">
                 {vanElements}
-            </div>)  : (
-
-            <h2>Loading....</h2>
-            )
+            </div>
             }
         </div>
         </>
