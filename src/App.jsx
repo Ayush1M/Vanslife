@@ -16,7 +16,7 @@ import HostVanPricing from "./Host/HostVanPricing"
 import HostVanPhotos from "./Host/HostVanPhotos"
 import NotFound from "./assets/NotFound"
 import Error from "./components/Error"
-import Login, {loader as loginLoader} from "./assets/Login"
+import Login, {loader as loginLoader , action as loginAction} from "./assets/Login"
 import { requireAuth } from "./utils"
 
 import "./server"
@@ -28,7 +28,11 @@ function App() {
     <Route path="/" element={<Layout />}>
       <Route index element={<Home />}/>
       <Route path="about" element={<About />}/>
-      <Route path= "login" element={<Login /> }  loader={loginLoader}/>
+      <Route path= "login" 
+             element={<Login /> }  
+             loader={loginLoader} 
+             action={loginAction}
+      />
 
       <Route path="vans" 
              element={<Vans />} 
