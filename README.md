@@ -13,6 +13,7 @@ VanLife is a van renting Application made with React Router which consists of si
 
 ## Screenshot
 
+![](./src/assets/images/screenshot.png)
 
 ## Technologies I Used
 * React
